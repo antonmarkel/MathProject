@@ -33,7 +33,9 @@ namespace MathProject
                         taken = false;break;     
                     }
                 }
-                if (taken) { arrFormuls[index] = ALL_FORMULS[possibleindex]; index++; }
+                if (taken) {
+                    arrIndexes[index] = possibleindex;
+                    arrFormuls[index] = ALL_FORMULS[possibleindex]; index++; }
             }
 
             return arrFormuls;

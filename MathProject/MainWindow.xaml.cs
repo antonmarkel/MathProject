@@ -34,13 +34,39 @@ namespace MathProject
             init_buttons();
             Poll.fast_poll(Answer_buttons,Question_textBlock);
         }
+        private void test_set_background()
+        {
+         
+            this.Dispatcher.BeginInvoke((ThreadStart)delegate()
+                {
+                    ImageBrush test = new ImageBrush();
+                    test.ImageSource = new BitmapImage(new Uri(@"Images\test_background.png", UriKind.Relative));
+                    this.Background = test;
+                }
+            );
+            Thread.Sleep(1000);
+            this.Dispatcher.BeginInvoke((ThreadStart)delegate()
+                {
+                    ImageBrush test = new ImageBrush();
+                    test.ImageSource = new BitmapImage(new Uri(@"Images\standard_background.png", UriKind.Relative));
+                    this.Background = test;
 
+                     Poll.fast_poll(Answer_buttons, Question_textBlock);
+                }
+            );
+        }
         private void choosen(object sender, RoutedEventArgs e)
         {
             bool result = Poll.check_answer((Button)sender);
-            else { Question_textBlock.Background = new SolidColorBrush(Colors.Red); }
-            Question_textBlock.Background = new SolidColorBrush(Colors.White);
-            Poll.fast_poll(Answer_buttons, Question_textBlock);
+            if (result)
+            {
+              Thread thread = new Thread(test_set_background);
+                thread.Start();
+            }
+            else
+            {
+                Poll.fast_poll(Answer_buttons, Question_textBlock);
+            }
         }
     }
 }

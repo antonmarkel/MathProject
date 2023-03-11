@@ -4,11 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MathProject"
+        xmlns:controls="clr-namespace:WpfMath.Controls;assembly=WpfMath"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
+    <Window.Background>
+        <ImageBrush Stretch="Fill" ImageSource="Images\standard_background.png"></ImageBrush>
+    </Window.Background>
     <Window.Resources>
-
+        <ImageBrush x:Name="name_right_back" x:Key="right_answer_background" Stretch="Fill" ImageSource="Images\test_background.png"></ImageBrush>
+        <ImageBrush x:Key="standard_background" Stretch="Fill" ImageSource="Images\standard_background.png"></ImageBrush>
         <ControlTemplate TargetType="Button" x:Key="btTemplate">
             <Border CornerRadius="25"
                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -23,19 +28,19 @@
             </Border>
         </ControlTemplate>
 
-       
+
         <Style TargetType="Button" x:Key="style_test">
             <Setter Property="Background" Value="AliceBlue"/>
             <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="DarkOrange"/>
                 </Trigger>
@@ -47,7 +52,7 @@
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>    
+        </Grid.RowDefinitions>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -61,6 +66,7 @@
             <Button Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen" Name ="second_answer" Grid.Row="1" Grid.Column="0" Content="test" FontSize="20"></Button>
             <Button Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen" Name ="third_answer" Grid.Row="0" Grid.Column="1" Content="test" FontSize="20"></Button>
             <Button Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen"  Name ="fourth_answer" Grid.Row="1" Grid.Column="1" Content="test" FontSize="20"></Button>
+
         </Grid>
         <TextBlock Name="Question_textBlock"
             Text="Formula defination" VerticalAlignment="Center" HorizontalAlignment="Center"

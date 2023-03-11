@@ -11,7 +11,6 @@ namespace MathProject
     {
         static Random random = new Random();
         public static Formul[] Formuls= new Formul[4];
-        public static string? Question;
         public static int right_answer;
         static public void make_poll(int capacity = 4)
         {

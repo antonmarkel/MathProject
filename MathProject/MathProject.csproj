@@ -7,4 +7,22 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\standard_background.png" />
+    <None Remove="Images\test_background.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\standard_background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\test_background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfMath" Version="1.0.0" />
+  </ItemGroup>
+
 </Project>
