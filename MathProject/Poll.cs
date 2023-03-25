@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using WpfMath;
+using WpfMath.Controls;
 
 namespace MathProject
 {
@@ -17,22 +19,24 @@ namespace MathProject
             Formuls = Formul.generate_arr(capacity);
             right_answer = random.Next(capacity);
         }
-        static public void set_poll(Button[] buttons,TextBlock question)
+        static public void set_poll(FormulaControl[] for_text, FormulaControl question)
         {
+
             for(int i = 0;i < Formuls.Length; i++)
             {
-                buttons[i].Content = Formuls[i].Definition;
+                for_text[i].Formula = Formuls[i].Definition;
             }
-            question.Text = Formuls[right_answer].Name;
+
+            question.Formula = Formuls[right_answer].Name;
         }
-        static public void fast_poll(Button[] buttons,TextBlock question, int capacity = 4)
+        static public void fast_poll(FormulaControl [] buttons,FormulaControl question, int capacity = 4)
         {
             make_poll(capacity);
             set_poll(buttons,question);
         }
-        static public bool check_answer(Button clickedButton)
+        static public bool check_answer(int chosen)
         {
-            return (clickedButton.Content.ToString() == Formuls[right_answer].Definition);
+            return chosen == right_answer;
         }
     }
 }

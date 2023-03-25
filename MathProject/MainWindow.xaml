@@ -9,7 +9,7 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Window.Background>
-        <ImageBrush Stretch="Fill" ImageSource="Images\standard_background.png"></ImageBrush>
+        <SolidColorBrush Color="#d8d8d8"></SolidColorBrush>
     </Window.Background>
     <Window.Resources>
         <ImageBrush x:Name="name_right_back" x:Key="right_answer_background" Stretch="Fill" ImageSource="Images\test_background.png"></ImageBrush>
@@ -30,7 +30,7 @@
 
 
         <Style TargetType="Button" x:Key="style_test">
-            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="Background" Value="#f5f5f5"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -42,7 +42,8 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="DarkOrange"/>
+                    <Setter Property="BorderThickness" Value="3"/>
+                    
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -62,15 +63,36 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen" Name ="first_answer"  Grid.Row="0" Grid.Column="0" Content="test" FontSize="20"></Button>
-            <Button Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen" Name ="second_answer" Grid.Row="1" Grid.Column="0" Content="test" FontSize="20"></Button>
-            <Button Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen" Name ="third_answer" Grid.Row="0" Grid.Column="1" Content="test" FontSize="20"></Button>
-            <Button Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen"  Name ="fourth_answer" Grid.Row="1" Grid.Column="1" Content="test" FontSize="20"></Button>
 
+            <Button Margin="5,5,5,5" Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen" Name ="first_answer"  Grid.Row="0" Grid.Column="0" FontSize="20">
+                <Button.Content>
+                    <controls:FormulaControl Name="Formul1"  Grid.Column="0" Grid.Row="0" Scale="25" VerticalAlignment="Center" HorizontalAlignment="Center" Formula="\left(x^2 + 2 \cdot x + 2\right) = 0" />
+                </Button.Content>
+            </Button>
+            <Button Margin="5,5,5,5" Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen" Name ="third_answer" Grid.Row="1" Grid.Column="0"  FontSize="20">
+                <Button.Content>
+                    <controls:FormulaControl Name="Formul3"  Grid.Column="0" Grid.Row="1" Scale="25" VerticalAlignment="Center" HorizontalAlignment="Center" Formula="\left(x^2 + 2 \cdot x + 2\right) = 0" />
+              
+
+                
+                </Button.Content>
+            </Button>
+            <Button Margin="5,5,5,5" Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen" Name ="second_answer" Grid.Row="0" Grid.Column="1"  FontSize="20">
+                <Button.Content>
+                    <controls:FormulaControl Name="Formul2"  Grid.Column="1" Grid.Row="0" Scale="25" VerticalAlignment="Center" HorizontalAlignment="Center" Formula="\left(x^2 + 2 \cdot x + 2\right) = 0" />
+                </Button.Content>
+            </Button>
+            <Button Margin="5,5,5,5" Style="{StaticResource style_test}" Template="{StaticResource btTemplate}" Click = "choosen"  Name ="fourth_answer" Grid.Row="1" Grid.Column="1"  FontSize="20">
+                <Button.Content>
+                    <controls:FormulaControl Name="Formul4"  Grid.Column="1" Grid.Row="1" Scale="25" VerticalAlignment="Center" HorizontalAlignment="Center" Formula="\left(x^2 + 2 \cdot x + 2\right) = 0" />
+                </Button.Content>
+            </Button>
         </Grid>
-        <TextBlock Name="Question_textBlock"
-            Text="Formula defination" VerticalAlignment="Center" HorizontalAlignment="Center"
-                   FontSize="50" ></TextBlock>
+        <controls:FormulaControl Name="Question_textBlock"
+            Formula="sin^2(\frac{x}{2})" VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Scale="50" ></controls:FormulaControl>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="48,33,0,0" VerticalAlignment="Top"
+                Click="test_change"/>
     </Grid>
 
 </Window>
