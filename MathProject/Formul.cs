@@ -12,7 +12,7 @@ namespace MathProject
     {
         High,Medium,Low
     }
-    class Formul
+   public class Formul
     { 
         static Random random = new Random();
 
@@ -21,11 +21,17 @@ namespace MathProject
         public string Name { get; private set; }
         public string Definition { get; private set; }
 
-        public Priority_Enum Priority { get; private set; }
+        public Priority_Enum Priority { get; set; }
 
         #region ToCreate
         public string[] ConfusingAnswers { get; set; }
         #endregion
+
+
+        public static void update_formuls()
+        {
+            ALL_FORMULS = INIT.UPLOAD_FORMULS();
+        }
 
         public static Formul[] generate_arr(int capacity) {
             #region first_setup

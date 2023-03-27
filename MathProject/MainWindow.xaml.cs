@@ -78,6 +78,7 @@ namespace MathProject
             FormulManager forTest = new FormulManager();
             this.Hide();
             forTest.Show();
+            this.Close();
         }
         private void choosen(object sender, RoutedEventArgs e)
         {
